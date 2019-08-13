@@ -199,6 +199,7 @@ local CONF_INFERENCES = {
   dns_error_ttl = { typ = "number" },
   dns_no_sync = { typ = "boolean" },
   router_consistency = { enum = { "strict", "eventual" } },
+  router_update_frequency = { typ = "number" },
 
   client_ssl = { typ = "boolean" },
 
