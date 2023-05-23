@@ -245,9 +245,10 @@ function _M:get_bulk(bulk, opts)
 end
 
 
-function _M:safe_set(key, value, shadow_page)
-  local str_marshalled, err = marshall_for_shm(value, self.mlcache.ttl,
-                                                      self.mlcache.neg_ttl)
+function _M:safe_set(key, value, shadow_page, opts)
+  local ttl = opts and opts.ttl or self.mlcache.ttl
+  local neg_ttl = opts and opts.neg_ttl or self.mlcache.neg_ttl
+  local str_marshalled, err = marshall_for_shm(value, ttl, neg_ttl)
   if err then
     return nil, err
   end
